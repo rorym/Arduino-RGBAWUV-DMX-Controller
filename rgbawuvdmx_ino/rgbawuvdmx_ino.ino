@@ -80,7 +80,7 @@ volatile int uvLevel = 0;
 
 // Defaults for Strobe function
 int strobeOn = 0;
-int nextStrobe = millis();
+unsigned long nextStrobe = millis();
 
 // the setup routine runs once when you press reset:
 void setup() {             
@@ -149,11 +149,11 @@ void loop()
     // If strobe is active
     if (dmx_slave.getChannelValue(strobeDMXch) > 0) {
       // Set the strobe rate
-      int strobeRate = dmx_slave.getChannelValue(strobeDMXch);
+      unsigned long strobeRate = dmx_slave.getChannelValue(strobeDMXch);
       
       // If the strobe is in the ON position
       if (strobeOn > 0) {
-        if (millis() - strobeRate >=0) {
+        if ((unsigned long) (millis() - nextStrobe) >= strobeRate) {
           // turn everything down
           analogWrite(redPin, 0);
           analogWrite(greenPin, 0);
@@ -167,7 +167,7 @@ void loop()
       }
       // If the strobe is in the OFF position
       if (strobeOn < 1) {
-        if (millis() - strobeRate >=0) {
+        if ((unsigned long) (millis() - nextStrobe) >= strobeRate) {
           analogWrite(redPin, redLevel);
           analogWrite(greenPin, greenLevel);
           analogWrite(bluePin, blueLevel);
