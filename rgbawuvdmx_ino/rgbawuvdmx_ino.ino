@@ -127,7 +127,24 @@ void loop()
     uvLevel = dmx_slave.getChannelValue(uvDMXch);
     
     // Adjust the intensities per the global
-    // - this math is on the to-do list :P
+    if (redLevel > globalIntensity) {
+      redLevel = globalIntensity;
+    }
+    if (greenLevel > globalIntensity) {
+      greenLevel = globalIntensity;
+    }
+    if (blueLevel > globalIntensity) {
+      blueLevel = globalIntensity;
+    }
+    if (whiteLevel > globalIntensity) {
+      whiteLevel = globalIntensity;
+    }
+    if (amberLevel > globalIntensity) {
+      amberLevel = globalIntensity;
+    }
+    if (uvLevel > globalIntensity) {
+      uvLevel = globalIntensity;
+    }
     
     // If strobe is active
     if (dmx_slave.getChannelValue(strobeDMXch) > 0) {
