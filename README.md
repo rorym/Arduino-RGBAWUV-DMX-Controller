@@ -8,11 +8,11 @@ uses the following hardware
 
 Arduino Mega 2560 (Available at most electronics suppliers)
 
-Arduino 6 Channel LED Shield
-http://www.ebay.com/itm/Arduino-6-Channel-LED-Shield-0-35-0-7-1A-/331136951841?ssPageName=ADME:L:OC:AU:3160
+Arduino 6 Channel LED Shield (Conceptinetics)
 
-Arduino DMX Controller with 3 PIN XLR connectors
-http://www.ebay.com/itm/2-5kV-Isolated-DMX-512-Shield-for-Arduino-RDM-Capable-R2-/331088447757?ssPageName=ADME:L:OC:AU:3160
+Arduino DMX Controller with 3 PIN XLR connectors (Conceptinetics)
+
+http://stores.ebay.com.au/Conceptinetics
 
 Features: 
 
