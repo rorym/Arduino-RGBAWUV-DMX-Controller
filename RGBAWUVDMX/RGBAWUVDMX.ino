@@ -105,11 +105,12 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() 
 {
+  
   // If the over all intensity is greater than 0
   if (dmx_slave.getChannelValue(intensityDMXch) > 0) {
     // Set the global intensity
     int globalIntensity = dmx_slave.getChannelValue(intensityDMXch);
-    
+
     // Move the previous levels to another param
     int prevRedLevel = redLevel;
     int prevGreenLevel = greenLevel;
