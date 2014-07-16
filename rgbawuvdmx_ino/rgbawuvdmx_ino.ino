@@ -61,13 +61,13 @@ const int amberPin = 6;
 const int uvPin = 7;
 
 // Define the DMX channels for each colour intensity
-const int intensityDMXch = 1;
-const int redDMXch = 2;
-const int greenDMXch = 3;
-const int blueDMXch = 4;
-const int whiteDMXch = 5;
-const int amberDMXch = 6;
-const int uvDMXch = 7;
+const int redDMXch = 1;
+const int greenDMXch = 2;
+const int blueDMXch = 3;
+const int whiteDMXch = 4;
+const int amberDMXch = 5;
+const int uvDMXch = 6;
+const int intensityDMXch = 7;
 const int strobeDMXch = 8;
 
 // Default levels for each colour
@@ -109,6 +109,14 @@ void loop()
   if (dmx_slave.getChannelValue(intensityDMXch) > 0) {
     // Set the global intensity
     int globalIntensity = dmx_slave.getChannelValue(intensityDMXch);
+    
+    // Move the previous levels to another param
+    int prevRedLevel = redLevel;
+    int prevGreenLevel = greenLevel;
+    int prevBlueLevel = blueLevel;
+    int prevWhiteLevel = whiteLevel;
+    int prevAmberLevel = amberLevel;
+    int prevUvLevel = uvLevel;
     
     // Get the levels for each colour
     redLevel = dmx_slave.getChannelValue(redDMXch);
@@ -155,7 +163,37 @@ void loop()
       }
     }else{
       // Standard fade functions
+      
+      // Check if the red level has changed
+      if (redLevel != prevRedLevel) {
+        // set the red level if it's changed
+        analogWrite(redPin, redLevel);
+      }
+      // Check if the green level has changed
+      if (greenLevel != prevGreenLevel) {
+        // set the green level if it's changed
+        analogWrite(greenPin, greenLevel);
+      }
+      // Check if the blue level has changed
+      if (blueLevel != prevBlueLevel) {
+        // set the blue level if it's changed
+        analogWrite(bluePin, blueLevel);
+      }
+      // Check if the whilte level has changed
+      if (whiteLevel != prevWhiteLevel) {
+        // set the whilte level if it's changed
+        analogWrite(whitePin, whiteLevel);
+      }
+      // Check if the amber level has changed
+      if (amberLevel != prevAmberLevel) {
+        // set the amber level if it's changed
+        analogWrite(amberPin, amberLevel);
+      }
+      // Check if the UV level has changed
+      if (uvLevel != prevUvLevel) {
+        // set the UV level if it's changed
+        analogWrite(uvPin, uvLevel);
+      }
     }
   }
- 
 }
